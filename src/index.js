@@ -4,18 +4,17 @@ import { myError } from './js/pnotify';
 import { myNotice } from './js/pnotify';
 import * as basicLightbox from 'basiclightbox';
 import './css/lightBox.min.css';
+import './js/interObserver';
 
 const refs = {
  gallery: document.querySelector('.gallery'),
  searchForm: document.querySelector('.search-form'),
- loadMoreBtn: document.querySelector('.load-more-btn'),
  wrapper: document.querySelector('.wrapper'),
 };
 
 const apiService = new ApiService();
 
 refs.searchForm.addEventListener('submit', onSearch);
-refs.loadMoreBtn.addEventListener('click', onLoadMore);
 refs.gallery.addEventListener('click', onLightboxOpen);
 
 function onSearch(e) {
@@ -29,23 +28,7 @@ function onSearch(e) {
  }
 }
 
-function onLoadMore() {
- apiService.fetchPhotos().then(renderMarkup);
- setTimeout(() => {
-  refs.wrapper.scrollIntoView({
-   behavior: 'smooth',
-   block: 'start',
-  });
- }, 500);
-}
-
 function renderMarkup(data) {
- if (data.length === 0) {
-  refs.loadMoreBtn.classList.add('is-hidden');
-  return myError();
- } else if (data.length !== 0) {
-  refs.loadMoreBtn.classList.remove('is-hidden');
- }
  refs.gallery.insertAdjacentHTML('beforeend', cardTemplate(data));
 }
 

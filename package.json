@@ -24,7 +24,6 @@
   "basiclightbox": "^5.0.4",
   "gh-pages": "^3.2.3",
   "handlebars": "^4.7.7",
-  "infinite-scroll": "^4.0.1",
   "lodash.debounce": "^4.0.8",
   "material-design-icons": "^3.0.1",
   "parcel-bundler": "^1.12.5",
