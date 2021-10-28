@@ -1,0 +1,35 @@
+{
+ "name": "image-finder-infinite-scroll",
+ "version": "1.0.0",
+ "description": "",
+ "main": "index.js",
+ "scripts": {
+  "dev": "parcel src/index.html",
+  "build": "parcel build src/index.html --public-url /image-finder-infinite-scroll/",
+  "deploy": "gh-pages -d dist",
+  "predeploy": "npm run build"
+ },
+ "repository": {
+  "type": "git",
+  "url": "git+https://github.com/serhiikondratiuk/image-finder-infinite-scroll.git"
+ },
+ "keywords": [],
+ "author": "",
+ "license": "ISC",
+ "bugs": {
+  "url": "https://github.com/serhiikondratiuk/image-finder-infinite-scroll/issues"
+ },
+ "homepage": "https://serhiikondratiuk.github.io/image-finder-infinite-scroll",
+ "dependencies": {
+  "basiclightbox": "^5.0.4",
+  "gh-pages": "^3.2.3",
+  "handlebars": "^4.7.7",
+  "infinite-scroll": "^4.0.1",
+  "lodash.debounce": "^4.0.8",
+  "material-design-icons": "^3.0.1",
+  "parcel-bundler": "^1.12.5",
+  "parcel-plugin-handlebars-precompile": "^1.0.2",
+  "parcel-plugin-nuke-dist": "^1.0.1",
+  "pnotify": "^5.2.0"
+ }
+}
