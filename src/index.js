@@ -4,7 +4,6 @@ import { myError } from './js/pnotify';
 import { myNotice } from './js/pnotify';
 import * as basicLightbox from 'basiclightbox';
 import './css/lightBox.min.css';
-// import './js/interObserver';
 
 const refs = {
  gallery: document.querySelector('.gallery'),
@@ -63,7 +62,7 @@ const onEntry = entries => {
  });
 };
 const options = {
- rootMargin: '200px',
+ rootMargin: '300px',
 };
 const observer = new IntersectionObserver(onEntry, options);
 
