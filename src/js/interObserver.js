@@ -11,5 +11,5 @@ const callback = entries => {
 
 const observer = new IntersectionObserver(callback, options);
 
-const sentinel = document.querySelector('.wrapper');
+const sentinel = document.querySelector('.sentinel');
 observer.observe(sentinel);

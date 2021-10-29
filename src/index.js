@@ -4,12 +4,12 @@ import { myError } from './js/pnotify';
 import { myNotice } from './js/pnotify';
 import * as basicLightbox from 'basiclightbox';
 import './css/lightBox.min.css';
-import './js/interObserver';
+// import './js/interObserver';
 
 const refs = {
  gallery: document.querySelector('.gallery'),
  searchForm: document.querySelector('.search-form'),
- wrapper: document.querySelector('.wrapper'),
+ sentinel: document.querySelector('.sentinel'),
 };
 
 const apiService = new ApiService();
@@ -29,6 +29,9 @@ function onSearch(e) {
 }
 
 function renderMarkup(data) {
+ if (data.length === 0) {
+  return myError();
+ }
  refs.gallery.insertAdjacentHTML('beforeend', cardTemplate(data));
 }
 
@@ -51,3 +54,17 @@ function onLightboxOpen(e) {
  );
  instance.show();
 }
+
+const onEntry = entries => {
+ entries.forEach(entry => {
+  if (entry.isIntersecting && apiService.query !== '') {
+   apiService.fetchPhotos().then(renderMarkup);
+  }
+ });
+};
+const options = {
+ rootMargin: '200px',
+};
+const observer = new IntersectionObserver(onEntry, options);
+
+observer.observe(refs.sentinel);
